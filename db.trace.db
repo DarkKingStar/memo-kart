@@ -1402,3 +1402,6 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/sou
 2024-02-28 23:43:33 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRIPTION VARCHAR(255)": "'The OPPO F19 Pro is a powerful smartphone with innovative camera technology to let you capture the beauty of any moment in all ... (292)"; SQL statement:
 insert into product (category_id, description, image_name, name, price, weight, id) values (?, ?, ?, ?, ?, ?, ?) [22001-200]
+2024-03-04 12:46:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRIPTION VARCHAR(255)": "STRINGDECODE('12th Generation Intel\u00ae Core\u2122 i5 processor\r\nWindows 11 Home\r\n39.6 cm (15.6) diagonal, FHD, 144 Hz ref... (286)"; SQL statement:
+insert into product (category_id, description, image_name, name, price, weight, id) values (?, ?, ?, ?, ?, ?, ?) [22001-200]
