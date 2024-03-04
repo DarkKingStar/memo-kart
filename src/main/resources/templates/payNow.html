@@ -73,48 +73,48 @@
     <div class="container">
 
        <!--Section: Block Content-->
-       <section class="mt-5 mb-4">
+       <section class="mt-5 mb-4 justify-content-center align-items-center" >
 
         <!--Grid row-->
-        <div class="row container">
+        <!-- <div class="row d-flex justify-content-center align-items-center"> -->
 
 
               <!--Grid column-->
-              <div class="col" style="padding: 0 !important;justify-content: center; align-items: center;display: flex; flex-grow: 0;">
+              <div class="row " style="padding: 0 !important;justify-content: center; align-items: center;display: flex; flex-grow: 0;">
                 <div>
                     <img th:src="@{/images/success.png}"  src="../static/images/success.png" width="auto" height="100" class="d-inline-block align-top" alt=""/>
                 </div>
               </div>
             <!--Grid column-->
             <!--Grid column-->
-            <div class="col-lg-6" >
+            <div class="row  justify-content-center align-items-center" >
                 <!--cartCount > 0 then make this div class col-lg-8  or col-lg-12-->
 
                 <!-- Card -->
                 <div class="card wish-list" style="border: none;">
                     <div class="card-body">
 
-                        <h5 class="mb-4">Thank you for your purchase.</h5>
-                        <h6>
+                        <h3 class="mb-4">Thank you for your purchase.</h3>
+                        <!-- <h6>
                             <span><strong>₹<span th:text="${total}"></span></strong></span> has been paid successfully.
-                        </h6>
+                        </h6> -->
                     </div>
                 </div>
-            </div>
+            <!-- </div> -->
             <!--Grid column-->
 
           
 
         </div>
         <!--Grid row-->
-        <!--Grid row-->
-        <div class="row">
+        <div class="row  justify-content-center align-items-center">
             <a class="nav-link" th:href="@{/}" href="#">
-                    <button class="btn bg-primary btn-block" >
+                    <button class="btn bg-primary btn-block text-white" >
                         Go Back to Home
                     </button>
                 </a>
         </div>
+        <!--Grid row-->
     </section>
     <!--Section: Block Content-->
 

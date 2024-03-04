@@ -43,8 +43,8 @@ public class CartController {
 
     @PostMapping("/payNow")
     public String payNow(Model model) {
-        model.addAttribute("total", GlobalData.cart.stream().mapToDouble(Product::getPrice).sum());
-        GlobalData.cart.clear();
+        // model.addAttribute("total", GlobalData.cart.stream().mapToDouble(Product::getPrice).sum());
+        // GlobalData.cart.clear();
 
         return "payNow";
     }
