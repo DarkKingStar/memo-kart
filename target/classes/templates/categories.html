@@ -47,6 +47,7 @@
         <tr>
             <th scope="col">SN</th>
             <th scope="col">Category Name</th>
+            <th scope="col">Preview</th>
             <th scope="col">Delete</th>
             <th scope="col">Update</th>
         </tr>
@@ -56,7 +57,7 @@
         <tr th:each="category, iStat : ${categories}">
             <th scope="row" th:text="${iStat.index + 1}">1</th>
             <td th:text="${category.name}">Larry</td>
-
+            <td><img src="" height="100px" width="100px"  th:src="@{${'/categoryImages/' + category.imageName}}" th:alt="${category.name}"></td>
             <td><a href="" th:href="@{/admin/categories/delete/{id}(id=${category.id})}" class="btn btn-danger">Delete</a></td>
             <td><a href="" th:href="@{/admin/categories/update/{id}(id=${category.id})}" class="btn btn-warning">Update</a></td>
 

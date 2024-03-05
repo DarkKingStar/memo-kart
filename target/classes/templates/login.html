@@ -60,21 +60,28 @@
                 <div th:if="${param.error}" class="alert alert-error text-danger">
                     Invalid username or password.
                 </div>
-
+                <span th:text="${newpassword}"></span>
+                
                 <input type="submit" value="Login" class="btn btn-primary btn-block">
-                <br>
-                <span >Don't have an account <a class="linkControl" href="./register.html"
-                                                th:href="@{/register}">Register here</a></span>
-                <br>
-                <!-- <a href="" th:href="@{/forgotpassword}">Forgot password ?</a> -->
+                
             </form>
-            <br>
-            <!-- <h3>OR</h3> -->
-            <!-- <a href="/oauth2/authorization/google" class="btn btn-primary">Sign-In with google </a> -->
-
+            <div class="col-sm-12 d-flex justify-content-between my-2 mx-0 p-0">
+                <a class="linkControl text-dark" href="./register.html"  th:href="@{/register}">Don't have an account? Register now</a>
+                <a class="linkControl text-danger" href="" th:href="@{/forgotpassword}">Forgot password ?</a>
+            </div>
         </div>
-
     </div>
+</div>
+<div class="container">
+        <div class="row  flex justify-content-center align-items-center my-5">
+            <h5>&#8212;&emsp;OR&emsp;&#8212;</h5>
+        </div>
+        <div class="row  flex justify-content-center align-items-center">
+            <a href="/oauth2/authorization/google" class="btn btn-light text-dark align-items-center d-flex" >
+                <img th:src="@{/images/logogoogle.png}" src="../static/images/logogoogle.png" width="auto" height="30" class="d-inline-block align-top mr-4" alt="G"/>
+                <span style="font-weight: 700;">Sign in with Google</span>
+            </a>
+        </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

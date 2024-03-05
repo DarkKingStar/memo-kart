@@ -24,7 +24,7 @@ public class SecurityCofig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/","/shop/**", "/forgotpasword", "/register", "/h2-console/**").permitAll()
+            .antMatchers("/","/shop/**", "/forgotpassword", "/register", "/h2-console/**").permitAll()
             .antMatchers("/admin/**").hasRole("ADMIN")
             .anyRequest()
             .authenticated()
@@ -64,6 +64,6 @@ public class SecurityCofig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**", "/productImages/**");
+        web.ignoring().antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**", "/productImages/**","/categoryImages/**");
     }
 }

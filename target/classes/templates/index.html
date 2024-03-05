@@ -13,7 +13,118 @@
     <title>Memo-Kart</title>
 <link rel="icon" href="../static/images/logo.png" type="image/x-icon" />
 <link rel="shortcut icon" href="../static/images/logo.png" type="image/x-icon" />
-    <!-- <style>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Oswald:300,400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+
+body{
+  font-family: 'Open Sans', sans-serif;
+}
+
+.gr-1 {
+  background: linear-gradient(170deg, #01E4F8 0%, #1D3EDE 100%);
+}
+.gr-2 {
+  background: linear-gradient(170deg, #B4EC51 0%, #429321 100%);
+}
+.gr-3 {
+  background: linear-gradient(170deg, #C86DD7 0%, #3023AE 100%);
+}
+
+* {
+  transition: 0.5s;
+}
+.column {
+  margin-top: 3rem;
+  padding-left: 3rem;
+}
+.column:hover {
+  padding-left: 0;
+}
+.column:hover .cardcus .txt {
+  margin-left: 1rem;
+}
+.column:hover .cardcus .txt p {
+  opacity: 1;
+}
+.column:hover .cardcus .txt h1{
+  color: rgba(255, 255, 255, 1);
+}
+.column:hover a {
+  color: rgba(255, 255, 255, 1);
+}
+.column:hover a:after {
+  width: 10%;
+}
+
+.cardcus{
+  min-height: 170px;
+  margin: 0;
+  padding: 1.7rem 1.2rem;
+  border: none;
+  border-radius: 0;
+  color: rgba(0, 0, 0, 1);
+  letter-spacing: 0.05rem;
+  font-family: 'Oswald', sans-serif;
+  box-shadow: 0 0 21px rgba(0, 0, 0, 0.27);
+}
+.cardcus.txt {
+  margin-left: -3rem;
+  z-index: 1;
+}
+.cardcus .txt h1 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.cardcus .txt p {
+  font-size: 0.7rem;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 0rem;
+  margin-top: 33px;
+  opacity: 0;
+  color: rgba(255, 255, 255, 1);
+}
+.cardcus a {
+  z-index: 3;
+  font-size: 0.7rem;
+  color: rgba(0, 0, 0, 1);
+  margin-left: 1rem;
+  position: relative;
+  bottom: -0.5rem;
+  text-transform: uppercase;
+}
+.cardcus a:after {
+  content: "";
+  display: inline-block;
+  height: 0.5em;
+  width: 0;
+  margin-right: -100%;
+  margin-left: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 1);
+  transition: 0.5s ease-in-out all;
+}
+.cardcus .ico-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.cardcus i {
+  position: relative;
+  right: -50%;
+  top: 60%;
+  font-size: 12rem;
+  line-height: 0;
+  opacity: 0.2;
+  color: rgba(255, 255, 255, 1);
+  z-index: 0;
+}
+
       @keyframes slideInFromLeft {
   0% {
     transform: translateX(-100%);
@@ -24,12 +135,29 @@
     opacity: 1;
   }
 }
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 
 .slide-in-from-left {
   transform: translateX(-100%);
+  opacity: 0;
   animation: slideInFromLeft 0.5s ease 0.5s forwards;
 }
-@keyframes fadeInWithDelay {
+.slide-in-from-right {
+  transform: translateX(100%);
+  opacity: 0;
+  animation: slideInFromRight 0.5s ease 0.5s forwards;
+}
+
+@keyframes fadeIn {
   0% {
     opacity: 0;
   }
@@ -37,16 +165,45 @@
     opacity: 1;
   }
 }
+.text-shodow-black{
+  text-shadow: 3px 3px 3px #000000;
+}
 
-.fade-in-with-delay {
+.fade-in-with-delay-1 {
   opacity: 0;
-  animation: fadeInWithDelay 0.5s ease 1.3s forwards;
+  animation: fadeIn 0.5s ease 1s forwards;
+}
+.fade-in-with-delay-2 {
+  opacity: 0;
+  animation: fadeIn 0.5s ease 1.5s forwards;
 }
 .fade-in-without-delay {
   opacity: 0;
-  animation: fadeInWithDelay 0.5s ease forwards;
+  animation: fadeIn 0.5s ease forwards;
 }
-    </style> -->
+  .catlink:hover .underline{
+    animation: underanime 0.35s ease-in-out forwards;
+  }
+  .catlink:hover .cardbody{
+    background-color: rgba(0,0,0,0) !important;
+  }
+
+  .underline{
+    background-color: #1D3EDE !important;
+    padding: 0.2rem 0rem;
+    width: 0%;
+  }
+
+  @keyframes underanime {
+    0%{
+      width: 0%;
+    }
+    100%{
+      width: 100%;
+    }
+  }
+
+    </style>
 </head>
 <body>
 
@@ -104,69 +261,147 @@
     </div>
 </nav>
 
-  <section class="main-content fade-in-without-delay" style="padding-top: 100px !important; background: rgb(6, 115, 231)">
-    <div class="container d-flex justify-content-around">
-      <div class="col-6 d-none d-lg-block">
-        <div class="alert alert-modern alert-dark text-center">
-          <span class="alert-content"><b>Memo-Kart</b>, your one stop shop!</span>
-        </div>
-      </div>
-    </div>
-      <div class="container-fluid d-flex align-items-center justify-content-around text-center" style="padding-left:0;padding-right: 0;"> 
-      <div class="mb-4">
-        <h2 class="text-light mb-4 slide-in-from-left">
-          <span class="display-4 font-weight-light">See it. Love it</span>
-          <span class="d-block">Choose it. <strong>Buy it</strong></span>
+  <section class="main-content fade-in-without-delay" style="background-image: url('/images/banner.jpg')">
+    
+      <div class="container-fluid d-flex align-items-center justify-content-around text-center" style="padding-top: 50px !important;padding-bottom: 50px !important;padding-left:0;padding-right: 0; background: linear-gradient(180deg, rgba(0,0,0,0.010037291283701011) 0%, rgba(0,0,0,0.3041549383425245) 32%, rgba(0,0,0,0.8055554985666141) 93%, rgba(0,0,0,1) 100%);"> 
+        <div class="mb-4">
+        <h2 class="text-light mb-4 slide-in-from-left text-shodow-black">
+          <span class="display-4 font-weight-bold">See it. Love it</span>
+          <span class="d-block font-weight-bold">Choose it. <strong>Buy it</strong></span>
         </h2>
-        <p class="lead text-light">Memo-Kart is one of the best online shopping platforms for electronics.</p>
-        <!-- <div class="mt-3">
-          <a href="#sct-page-examples" class="btn fade-in-with-delay btn-outline-light b-1 text-light rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me">
-            <span class="btn-inner--text">Page Examples</span>
+          <div class="col-12 d-none d-lg-block">
+            <div class="alert alert-modern alert-dark fade-in-with-delay-1 text-center">
+              <span class="alert-content"><b>Memo-Kart</b>, your one stop shop!</span>
+            </div>
+          </div>
+        <p class="lead text-light slide-in-from-right text-shodow-black"><strong>Memo-Kart is one of the best online shopping platforms for electronics.</strong></p>
+        <div class="mt-3">
+          <a href="#categories" style="border-width: 3.5px;" class="btn fade-in-with-delay-2 btn-outline-danger text-danger rounded-pill hover-translate-y-n3 btn-icon mr-sm-4">
+            <span class="btn-inner--text font-weight-bold">Categories</span>
             <span class="btn-inner--icon"><i class="fas fa-angle-right"></i></span>
           </a>
-          <a href="#sct-features" class="btn fade-in-with-delay btn-outline-light text-light b-1 rounded-pill hover-translate-y-n3 btn-icon d-none d-xl-inline-block scroll-me">
+          <a href="#features" style="border-width: 3.5px;" class="btn fade-in-with-delay-2 btn-outline-warning text-warning btn-border-width rounded-pill hover-translate-y-n3 btn-icon d-none d-xl-inline-block">
             <span class="btn-inner--icon"><i class="fas fa-file-alt"></i></span>
-            <span class="btn-inner--text">More Features</span>
+            <span class="btn-inner--text font-weight-bold">Features</span>
           </a>
-        </div> -->
+        </div>
       </div>
   </section>
 
-    <section id="sct-page-examples" class="slice bg-section-secondary">
-        <h2 class="text-dark my-4 text-center">
-            <span class="display-4">Categories</span>
-        </h2>
+  <!-- categories -->
+    <section id="categories">
+        <h1 class="text-dark my-4 text-center">
+            See our categories of products
+        </h1>
       <div class="container my-5">
         <div class="row">
           <div class="col-lg-4 col-sm-6 mb-2" th:each="category, iStat : ${categories}">
-            <div class="card text-center">
-              <div class="px-4 pb-5 mt-5">
-                <h5 th:text="${category.name}">Item 1</h5>
-                <p class="text-muted">
-                    <a href="" th:href="@{/shop/category/{id}(id=${category.id})}" class="btn btn-warning text-dark">CHECK OUT</a>
-                </p>
+            <div class="card catlink">
+              <a href="#" th:href="@{/shop/category/{id}(id=${category.id})}" style="text-decoration: none;">
+              <img src="" height="100px" width="100px"  th:src="@{${'/categoryImages/' + category.imageName}}" th:alt="${category.name}" style="position: absolute;top:0;left:0;width: 100%;height: 100%;">
+              <div class="card-body cardbody px-0 pt-0 d-flex align-items-end" 
+              style="position: relative; z-index: 1;
+               background-color: rgba(0, 0, 0, 0.35); height: 15rem;
+                padding-bottom: 0.5rem;
+               ">
+               <div style="width:80%">
+                 
+                   <span th:text="${category.name}"  
+                   class="card-title text-white text-shodow-black font-weight-bold"
+                   style="font-size: 1.5rem; margin-left: 0.5rem;"
+                   >Item 1</span>
+                 
+                 <span ></span>
+                 <div class="underline"></div>
+               </div>
               </div>
+              </a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- <section class="slice slice-lg">
-      <div class="container mt-3">
-        <div class="row row-grid justify-content-around align-items-center">
-          <div class="col-lg-5 order-lg-2">
-            <div class=" pr-lg-4">
-              <h5 class=" h3">Change the way you build wesites. Forever.</h5>
-              <p class="lead mt-4 mb-5">With Purpose you get components and examples, including tons of variables that will help you customize this theme with ease.</p><a href="https://themes.getbootstrap.com/product/purpose-website-ui-kit/" class="link link-underline-primary">Purchase now</a>
+    <!-- features -->
+    <section id="features">
+      <div class="container my-5">
+        <div class="row">
+          <div class="col-md-6 col-lg-4 column">
+            <div class="cardcus gr-1">
+              <div class="txt">
+                <h1>Customer Satisfaction </br>
+                  Guaranteed</h1>
+                  <p>Your satisfaction is our top priority. Benefit from our highly responsive customer support team, always ready to assist you with any queries or concerns promptly and effectively.</p>
+              </div>
+              <a href="#">more</a>
+              <div class="ico-card">
+                <i class="fa fa-cannabis"></i>
+            </div>
             </div>
           </div>
-          <div class="col-lg-6 order-lg-1">
-            <img alt="Image placeholder" src="assets/img/theme/light/presentation-1.png" class="img-fluid img-center">
+          <div class="col-md-6 col-lg-4 column">
+            <div class="cardcus gr-2">
+              <div class="txt">
+                <h1>Secure </br>
+                  Transactions</h1>
+                  <p> Shop with confidence knowing that your transactions are secure. We employ the latest encryption technology to safeguard your personal and financial information.</p>
+              </div>
+              <a href="#">more</a>
+            
+              <div class="ico-card">
+              <i class="fa fa-lock"></i>
+            </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 column">
+            <div class="cardcus gr-3">
+              <div class="txt">
+                <h1>Competitive</br>Prices</h1>
+                <p>We understand the value of your hard-earned money. Enjoy competitive prices on all our products, ensuring you get the best deals without compromising on quality.</p>
+              </div>
+              <a href="#">more</a>
+            <div class="ico-card">
+              <i class="fa fa-money-bill-wave"></i>
+            </div>
+            </div>
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
+
+    <!-- about -->
+    <section>
+      <div class="container mt-3">
+        <div class="row justify-content-around align-items-center">
+          <div class="col-lg-6 order-lg-1">
+          </div>
+          <div class="col-lg-6 order-lg-2">
+            <h5 class="h3 font-weight-bold">Revolutionize Your Tech Experience with Memo Kart's E-Commerce Haven!</h5>
+            </div>
+         
+        </div>
+        <div class="row justify-content-around align-items-center">
+          <div class="col-lg-6 order-lg-1">
+            <img alt="Image placeholder" src="/images/img1.jpg" class="img-fluid image-center" >
+          </div>
+          <div class="col-lg-6 order-lg-2">
+            <div class=" pr-lg-4">
+              <p class="lead display-6">
+                Welcome to Memo Kart's Electronics Emporium, where cutting-edge technology meets unbeatable convenience. Our e-commerce website is your one-stop destination for all things electronic, offering a seamless and enriching shopping experience.
+              </p>
+              <p class="lead display-6">
+                Discover a vast array of top-notch gadgets, from the latest smartphones to state-of-the-art home appliances, all carefully curated to cater to your tech-savvy needs. Memo Kart's E-Commerce ensures that you stay ahead of the curve with the most innovative and reliable electronic products.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+   
+
+
+
+
 
     <!-- <section class="slice slice-lg">
       <div class="container">

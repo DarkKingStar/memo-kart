@@ -16,4 +16,5 @@ public class Category {
     @Column(name = "category_id")
     private int id;
     private String name;
+    private String imageName;
 }

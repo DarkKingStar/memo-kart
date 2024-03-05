@@ -25,7 +25,8 @@ import com.hego.kart.service.ProductService;
 
 @Controller
 public class AdminController {
-    public static String uplaodDir = System.getProperty("user.dir") + "/src/main/resources/static/productImages";
+    public static String uplaodDirforproduct = System.getProperty("user.dir") + "/src/main/resources/static/productImages";
+    public static String uplaodDirforcategory = System.getProperty("user.dir") + "/src/main/resources/static/categoryImages";
 
     @Autowired
     CategoryService categoryService;
@@ -50,7 +51,18 @@ public class AdminController {
     }
 
     @PostMapping("/admin/categories/add")
-    public String postCatAdd(@ModelAttribute("category") Category category){
+    public String postCatAdd(@ModelAttribute("category") Category category,
+    @RequestParam("categoryImage") MultipartFile file,
+    @RequestParam("imgName") String imgName) throws IOException{
+        String imageUUID;
+        if(!file.isEmpty()){
+            imageUUID = file.getOriginalFilename();
+            Path fileNameAndPath  = Paths.get(uplaodDirforcategory, imageUUID);
+            Files.write(fileNameAndPath, file.getBytes());
+        }else{
+            imageUUID = imgName;
+        }
+        category.setImageName(imageUUID);
         categoryService.addCategory(category);
         return "redirect:/admin/categories";
     }
@@ -103,7 +115,7 @@ public class AdminController {
         String imageUUID;
         if(!file.isEmpty()){
             imageUUID = file.getOriginalFilename();
-            Path fileNameAndPath  = Paths.get(uplaodDir, imageUUID);
+            Path fileNameAndPath  = Paths.get(uplaodDirforproduct, imageUUID);
             Files.write(fileNameAndPath, file.getBytes());
         }else{
             imageUUID = imgName;

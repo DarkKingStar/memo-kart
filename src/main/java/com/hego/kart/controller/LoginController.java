@@ -1,17 +1,25 @@
 package com.hego.kart.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hego.kart.global.GlobalData;
 import com.hego.kart.model.Role;
@@ -28,10 +36,34 @@ public class LoginController {
     @Autowired
     RoleRepository roleRepository;
 
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+
     @GetMapping("/login")
-    public String login() {
+    public String login(Model model) {
         GlobalData.cart.clear();
         return "login";
+    }
+    @GetMapping("/forgotpassword")
+    public String getForgotPassword() {
+        return "forgotpassword";
+    }
+
+    @PostMapping("/forgotpassword")
+    public String postForgotPassword(@RequestParam("email") String email, 
+    RedirectAttributes attributes) {
+        Optional<User> users = userRepository.findUserByEmail(email);
+        if(users.isEmpty()) {
+            attributes.addAttribute("error", "Invalid Email");
+            return "redirect:/forgotpassword";
+        }
+        else {
+            String newPassword = RandomStringUtils.randomAlphanumeric(8);
+            users.get().setPassword(bCryptPasswordEncoder.encode(newPassword));
+            userRepository.save(users.get());
+            logger.info("A new password has been sent to the email: {} and the new password is: {}", email, newPassword);
+            attributes.addAttribute("success", "Password has been sent to your email");
+            return "redirect:/forgotpassword";
+        }
     }
 
     @GetMapping("/register")
@@ -51,5 +83,4 @@ public class LoginController {
         request.login(user.getEmail(), password);
         return "redirect:/";
     }
-
 }

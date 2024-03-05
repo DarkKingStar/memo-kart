@@ -57,7 +57,11 @@
         <tr th:each="product, iStat : ${products}">
             <th scope="row" th:text="${iStat.index + 1}">1</th>
             <td th:text="${product.name}">Larry</td>
-            <td th:text="${product.category.name}">Larry</td>
+            <td>
+                <span th:text="${product.category.name}">Larry</span>
+                <br/>
+                <!-- <img src="" height="100px" width="100px"  th:src="@{${'/categoryImages/' + product.category.imageName}}" th:alt="${product.category.name}"> -->
+            </td>
             <td><img src="" height="100px" width="100px"  th:src="@{${'/productImages/' + product.imageName}}" th:alt="${product.name}"></td>
 
             <td><a href="" th:href="@{/admin/product/delete/{id}(id=${product.id})}" class="btn btn-danger">Delete</a></td>
