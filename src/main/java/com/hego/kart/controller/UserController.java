@@ -21,6 +21,7 @@ public class UserController {
     public String home(Model model) {
         model.addAttribute("cartCount", GlobalData.cart.size());
         model.addAttribute("categories", categoryService.getAllCategory());
+        model.addAttribute("products", productService.getAllProducts());
         return "index";
     }
     

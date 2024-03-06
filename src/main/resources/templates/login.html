@@ -13,6 +13,32 @@
     <title>Memo-Kart</title>
     <link rel="icon" href="../static/images/logo.png" type="image/x-icon" />
     <link rel="shortcut icon" href="../static/images/logo.png" type="image/x-icon" />
+    <style>
+        body{
+            color:white;
+            overflow: hidden;
+            background-color: black;
+        }
+        .bgimage{
+            background-image: url('./images/login.webp');
+            background-blend-mode: darken, luminosity;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 95vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .section{
+            background-color: rgba(0, 0, 0, 0.5);
+            min-width: 500px;
+            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(15px);
+            width: 35%;
+            border-radius: 8px;
+        }
+    </style>
     </head>
 <body>
 
@@ -42,46 +68,57 @@
         </div>
     </div>
 </nav>
-<div class="container">
-    <div class="row flex justify-content-center">
-        <div class="col-sm-6">
-            <h2 class="text-center">Login</h2>
-            <p class="text-center">Please fill out this to login</p>
+
+<div class="container-fluid bgimage">
+    <div class="section">
+        <div class=" px-5 pt-5">
+            <h2 class="text-center font-weight-bold">LOGIN</h2>
+            <p class="text-center font-weight-light">Certainly! Please complete this form for authentication.</p>
             <form th:action="@{/login}" method="post">
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" placeholder="Your Email" class="form-control form-control-lg">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter Your Email" class="form-control form-control rounded-3">
                 </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control form-control-lg" placeholder="Password" name="password" id="password">
+                <div class="form-group m-0">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control form-control rounded-3" placeholder="Enter Your Password" name="password" id="password">
                 </div>
                 <div th:if="${param.error}" class="alert alert-error text-danger">
                     Invalid username or password.
                 </div>
-                <span th:text="${newpassword}"></span>
+                <div class="d-flex justify-content-end m-0 mt-1 p-0">
+                    <a class="linkControl text-light font-weight-light" href="" th:href="@{/forgotpassword}">Forgot password ?</a>
+                </div>
                 
-                <input type="submit" value="Login" class="btn btn-primary btn-block">
-                
+                <button type="submit"  class="mt-4"  style="background-color: transparent; outline: none; border: none; margin: 0;padding: 0;width: 100%;">
+                    <a style="border-width: 3.5px;  padding: 3.5px; width: 100%;" class="btn btn-outline-danger text-danger rounded-3 hover-translate-y-n3">
+                        <span class="btn-inner--text font-weight-bold">Login</span>
+                    </a>
+                </button>
+              
             </form>
-            <div class="col-sm-12 d-flex justify-content-between my-2 mx-0 p-0">
-                <a class="linkControl text-dark" href="./register.html"  th:href="@{/register}">Don't have an account? Register now</a>
-                <a class="linkControl text-danger" href="" th:href="@{/forgotpassword}">Forgot password ?</a>
+            
+            <div class="d-flex justify-content-start mb-0 mt-4 p-0">
+                <a class="linkControl text-warning font-weight-bold" href="./register.html"  th:href="@{/register}">Don't have an account? Register now</a>
             </div>
-        </div>
+            
+</div>
+
+        <div class="py-2">
+            <div class="row  d-flex justify-content-center align-items-center mb-3">
+                <hr style="border-top: 2px solid rgba(255,255,255,0.5); margin: 25px 25px; width: 30%;"/>
+                <span style="color: rgba(255,255,255,0.5)">OR</span>
+                <hr style="border-top: 2px solid rgba(255,255,255,0.5); margin: 25px 25px; width: 30%;"/>
+            </div>
+            <div class="row  d-flex justify-content-center align-items-center pb-3">
+                <a href="/oauth2/authorization/google" class="btn btn-light text-dark align-items-center d-flex" >
+                    <img th:src="@{/images/logogoogle.png}" src="../static/images/logogoogle.png" width="auto" height="30" class="d-inline-block align-top mr-4" alt="G"/>
+                    <span style="font-weight: 700;">Sign in with Google</span>
+                </a>
+            </div>
     </div>
 </div>
-<div class="container">
-        <div class="row  flex justify-content-center align-items-center my-5">
-            <h5>&#8212;&emsp;OR&emsp;&#8212;</h5>
-        </div>
-        <div class="row  flex justify-content-center align-items-center">
-            <a href="/oauth2/authorization/google" class="btn btn-light text-dark align-items-center d-flex" >
-                <img th:src="@{/images/logogoogle.png}" src="../static/images/logogoogle.png" width="auto" height="30" class="d-inline-block align-top mr-4" alt="G"/>
-                <span style="font-weight: 700;">Sign in with Google</span>
-            </a>
-        </div>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
