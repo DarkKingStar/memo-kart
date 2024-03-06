@@ -409,9 +409,11 @@ body{
       <i id="left" class="fa fa-arrow-left"></i>
       <ul class="carousel" >
         <li class="card" th:each="product, iStat : ${products}">
+          <a  href="#" th:href="@{/shop/product/{id}(id=${product.id})}" style="color: #000000; text-decoration: none; text-align: center;">
           <div class="img"><img src="/images/img1.jpg" alt="img" th:src="@{${'/productImages/' + product.imageName}}" th:alt="${product.name}" draggable="false"></div>
           <h2 th:text="${ '₹' + product.price}">Blanche Pearson1</h2>
           <span th:text="${product.name}">Sales Manager</span>
+          </a>
         </li>
       </ul>
       <i id="right" class="fa fa-arrow-right"></i>
