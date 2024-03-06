@@ -61,7 +61,7 @@ public class LoginController {
             users.get().setPassword(bCryptPasswordEncoder.encode(newPassword));
             userRepository.save(users.get());
             logger.info("A new password has been sent to the email: {} and the new password is: {}", email, newPassword);
-            attributes.addAttribute("success", "Password has been sent to your email");
+            attributes.addAttribute("success", "Password has been sent to your email. go back to Login to Procceed with new password");
             return "redirect:/forgotpassword";
         }
     }
@@ -73,7 +73,15 @@ public class LoginController {
 
     @PostMapping("/register")
     public String postRegister(@ModelAttribute("user") User user, 
-    HttpServletRequest request) throws ServletException {
+    HttpServletRequest request, RedirectAttributes attributes) throws ServletException {
+        String email = user.getEmail();
+        Optional<User> existingUser = userRepository.findUserByEmail(email);
+        if (existingUser.isPresent()) {
+            attributes.addAttribute("firstname", user.getFirstName());
+            attributes.addAttribute("lastname", user.getLastName());
+            attributes.addAttribute("error", "user already exists with that email address");
+            return "redirect:/register";
+        }
         String password = user.getPassword();
         user.setPassword(bCryptPasswordEncoder.encode(password));
         List<Role> roles = new ArrayList<>();
