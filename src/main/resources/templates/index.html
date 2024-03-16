@@ -5,7 +5,7 @@
      <link type="text/css" rel="stylesheet" href="/css/index.css" th:href="@{/css/index.css}"/>
 <body>
   <div th:replace="fragment/_navbarhome :: navbar"></div>
-
+<main  style="min-height: 100vh;">
   <section class="main-content fade-in-without-delay" style="background-image: url('/images/banner.jpg')">
 
       <div class="container-fluid d-flex align-items-center justify-content-around text-center" style="padding-top: 50px !important;padding-bottom: 50px !important;padding-left:0;padding-right: 0; background: linear-gradient(180deg, rgba(0,0,0,0.010037291283701011) 0%, rgba(0,0,0,0.3041549383425245) 32%, rgba(0,0,0,0.8055554985666141) 93%, rgba(0,0,0,1) 100%);"> 
@@ -157,7 +157,7 @@
         </div>
       </div>
     </section> 
-
+  </main>
     <div th:replace="fragment/_footer :: footer"></div>
       
   </div>
