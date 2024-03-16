@@ -19,6 +19,6 @@ public class Role {
     @NotEmpty
     private String name;
 
-    @ManyToMany(mappedBy = "roles", fetch= FetchType.EAGER)
+    @ManyToMany(mappedBy = "roles")
     private List<User> users;
 }

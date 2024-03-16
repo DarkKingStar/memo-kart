@@ -19,6 +19,10 @@
                     <a class="nav-link" th:href="@{/shop}" href="#">Shop</a>
                 </li>
                 <li class="nav-item active">
+                    <a class="nav-link" sec:authorize="isAuthenticated()"  th:href="@{/profile}" href="#">Profile</a>
+                </li>
+                
+                <li class="nav-item active">
                     <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">Login</a>
                 </li>
                 <li class="nav-item active">

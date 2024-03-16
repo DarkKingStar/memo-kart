@@ -5,6 +5,11 @@
     <main  style="min-height: 100vh;">
     <div th:replace="fragment/_navbar :: navbar"></div>
     <h1>Profile details</h1>
+    <p th:text="${user.email}"></p>
+    <p>
+        <span th:text="${user.firstName}"></span>
+        <span th:text="${user.lastName}"></span>
+    </p>
 </main>
 
 <div th:replace="fragment/_footer :: footer"></div>
