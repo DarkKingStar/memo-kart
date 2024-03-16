@@ -28,6 +28,21 @@ public class User {
 
     private String password;
 
+    private String profilepic;
+
+    private String backgroundpic;
+
+    private String address;
+
+    private String contact;
+
+    private String totalamount;
+
+    private String totalitem;
+
+    // @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    // private List<Product> products;
+
     @ManyToMany(cascade = CascadeType.MERGE,  fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",
         joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "ID")},

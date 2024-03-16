@@ -1,7 +1,6 @@
 package com.hego.kart.controller;
 
 
-import java.util.Optional;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.hego.kart.global.GlobalData;
-import com.hego.kart.model.User;
 import com.hego.kart.service.CategoryService;
 import com.hego.kart.service.ProductService;
 import com.hego.kart.service.UserService;
