@@ -46,11 +46,14 @@
   </section>
 
   <section>
-    <ul id="suggestionList"></ul>
+    <div id="search" class="container-fluid text-center" style="display: none;">
+      <h3>Search for: <span id="searchquery"></span></h3>
+      <ul id="searchlist"></ul>
+    </div>
   </section>
 
-  <!-- product: Carousel -->
-  <section id="products">
+  <!-- offer: Carousel -->
+  <section id="offers">
     <div class="wrapper">
       <i id="left" class="fa fa-arrow-left"></i>
       <ul class="carousel" >
@@ -258,27 +261,45 @@ wrapper.addEventListener("mouseleave", autoPlay);
 
 </script>
 
-<script>
+<script th:inline="javascript">
+ /*<![CDATA[*/
+  // Accessing products data
+  var productsData = /*[[${products}]]*/ '[]'; // Convert to JSON format if necessary
+  
+  // Now you can use productsData in your JavaScript code
+  console.log(productsData);
+
   function searchProducts(){
-    var inputValue = document.getElementById("searchInput").value;
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/search?query=' + inputValue);
-    xhr.onreadystatechange = function() {
-      if(xhr.readyState === 4 && xhr.status === 200) {
-        var response  = JSON.parse(xhr.responseText);
-        console.log(response);
-        displayProductsSuggestion(response)
+    var input = document.getElementById("searchInput").value;
+    var searchquery = document.getElementById("searchquery");
+    searchquery.innerHTML = input;
+    var controller = new AbortController();
+    setTimeout(() => controller.abort(), 1000);
+    if(input !==""){
+      var ul = document.getElementById("searchlist");
+      ul.innerHTML = "";
+      for(var i = 0; i < productsData.length; i++){
+        if(productsData[i].name.toLowerCase().includes(input.toLowerCase())){
+          var li = document.createElement("li");
+          var img = document.createElement("img");
+          var name = document.createElement("span");
+          var price = document.createElement("h4");
+          price.innerHTML = "₹ " + productsData[i].price;
+          img.src = "productImages/" +productsData[i].imageName;
+          name.innerHTML = productsData[i].name;
+          li.appendChild(img);
+          li.appendChild(name);
+          li.appendChild(price);
+          ul.appendChild(li);
+        }
+        document.getElementById("search").style.display = "block";
       }
+    }else{
+      document.getElementById("search").style.display = "none";
     }
   }
-  function displayProductsSuggestion(suggestions){  
-    var suggestionsList = document.getElementById("suggestionList");
-    suggestionsList.innerHTML = '';
-    for(var i = 0; i < suggestions.length; i++){
-      var suggestion = suggestions[i];
-      var li = document.createElement("li");
-    }
-  }
+  
+  /*]]>*/
 </script>
 
 </body>

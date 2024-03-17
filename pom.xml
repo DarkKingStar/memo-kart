@@ -8,8 +8,8 @@
 		<version>2.4.1</version>
 		<relativePath/>
 	</parent>
-	<groupId>com.hego</groupId>
-	<artifactId>hego</artifactId>
+	<groupId>com.memo</groupId>
+	<artifactId>memo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>MemoKart</name>
 	<description>spring boot e-commerce application with Thymeleaf(h2-console, html/css)</description>
