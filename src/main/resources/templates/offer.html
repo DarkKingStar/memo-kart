@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <div th:replace="fragment/_header :: header"></div>
+<body>
+    <div th:replace="fragment/_navbaradmin :: navbar"></div>
+    
+<main style="min-height: 100vh;">
+
+<div class="container">
+
+    <a th:href="@{/admin/offer/add}" style="margin: 20px 0" class="btn btn-primary">Add Offer</a>
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">SN</th>
+            <th scope="col">Offer Name</th>
+            <th scope="col">Code</th>
+            <th scope="col">Discount</th>
+            <th scope="col">Preview</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Update</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="offer, iStat : ${offers}">
+            <th scope="row" th:text="${iStat.index + 1}">1</th>
+            <td th:text="${offer.name}">NAME</td>
+            <td th:text="${offer.code}">CODE</td>
+            <td th:text="${offer.discount}">DISCOUNT</td>
+            <td><img src="" height="100px" width="100px"  th:src="@{${'/offerImages/' + offer.banner}}" th:alt="${offer.name}"></td>
+            <td><a href="" th:href="@{/admin/offer/delete/{id}(id=${offer.id})}" class="btn btn-danger">Delete</a></td>
+            <td><a href="" th:href="@{/admin/offer/update/{id}(id=${offer.id})}" class="btn btn-warning">Update</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</main>
+<div th:replace="fragment/_footer :: footer"></div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

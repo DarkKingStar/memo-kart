@@ -14,10 +14,13 @@
                     <a class="nav-link" th:href="@{/admin}" href="#">Dashboard</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" th:href="@{/category}" href="#">Categories</a>
+                    <a class="nav-link" th:href="@{/admin/category}" href="#">Categories</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" th:href="@{/product}" href="#">Products</a>
+                    <a class="nav-link" th:href="@{/admin/product}" href="#">Products</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" th:href="@{/admin/offer}" href="#">Offers</a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" sec:authorize="isAuthenticated()"  th:href="@{/profile}" href="#">Profile</a>

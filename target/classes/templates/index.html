@@ -16,7 +16,19 @@
         </h2>
           <div class="col-12 d-none d-lg-block">
             <div class="alert alert-modern alert-dark fade-in-with-delay-1 text-center">
-              <span class="alert-content"><b>Memo-Kart</b>, your one stop shop!</span>
+              <span class="alert-content" style="display: flex; flex-direction: row;">
+              <input type="text" class="fade-in-with-delay-2" 
+              placeholder="Memo-Kart, your one stop shop!"   
+              style="text-align: center;outline: none !important; flex: 1; border:none !important; background-color: transparent;"
+              oninput="searchProducts()"
+              id="searchInput"
+              />
+              <button 
+              style="background-color: transparent;border: none !important; outline: none !important;"
+              >
+                <i class="fas fa-search"></i>
+              </button>
+            </span>
             </div>
           </div>
         <p class="lead text-light slide-in-from-right text-shodow-black"><strong>Memo-Kart is one of the best online shopping platforms for electronics.</strong></p>
@@ -33,16 +45,23 @@
       </div>
   </section>
 
+  <section>
+    <ul id="suggestionList"></ul>
+  </section>
+
   <!-- product: Carousel -->
   <section id="products">
     <div class="wrapper">
       <i id="left" class="fa fa-arrow-left"></i>
       <ul class="carousel" >
-        <li class="card" th:each="product, iStat : ${products}">
-          <a  href="#" th:href="@{/shop/viewproduct/{id}(id=${product.id})}" style="color: #000000; text-decoration: none; text-align: center;">
-          <div class="img"><img src="/images/img1.jpg" alt="img" th:src="@{${'/productImages/' + product.imageName}}" th:alt="${product.name}" draggable="false"></div>
-          <h2 th:text="${ '₹' + product.price}">Blanche Pearson1</h2>
-          <span th:text="${product.name}">Sales Manager</span>
+        <li class="card" th:each="offer, iStat : ${offers}">
+          <a  href="#" th:href="@{/shop/viewoffer/{id}(id=${offer.id})}" 
+          style="color: #000000; text-decoration: none; text-align: center;">
+          <div class="img"><img src="/images/img1.jpg" alt="img" th:src="@{${'/offerImages/' + offer.banner}}" th:alt="${offer.code}" draggable="false"></div>
+          <span th:text="${offer.name}">Sales Manager</span>
+          <p th:text="${offer.description}">Sales Manager</p>
+          <h5 th:text="${offer.discount}">Blanche Pearson1</h5>
+          <span th:text="${offer.code}" style="background-color: aquamarine;">Sales Manager</span>
           </a>
         </li>
       </ul>
@@ -238,5 +257,29 @@ wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
 wrapper.addEventListener("mouseleave", autoPlay);
 
 </script>
+
+<script>
+  function searchProducts(){
+    var inputValue = document.getElementById("searchInput").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/search?query=' + inputValue);
+    xhr.onreadystatechange = function() {
+      if(xhr.readyState === 4 && xhr.status === 200) {
+        var response  = JSON.parse(xhr.responseText);
+        console.log(response);
+        displayProductsSuggestion(response)
+      }
+    }
+  }
+  function displayProductsSuggestion(suggestions){  
+    var suggestionsList = document.getElementById("suggestionList");
+    suggestionsList.innerHTML = '';
+    for(var i = 0; i < suggestions.length; i++){
+      var suggestion = suggestions[i];
+      var li = document.createElement("li");
+    }
+  }
+</script>
+
 </body>
 </html>

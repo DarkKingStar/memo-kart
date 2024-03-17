@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.hego.kart.global.GlobalData;
 import com.hego.kart.service.CategoryService;
+import com.hego.kart.service.OfferService;
 import com.hego.kart.service.ProductService;
 import com.hego.kart.service.UserService;
 
@@ -25,6 +26,8 @@ public class UserController {
     @Autowired
     ProductService productService;
     @Autowired
+    OfferService offerService;
+    @Autowired
     UserService userService;
 
 
@@ -34,7 +37,7 @@ public class UserController {
     public String home(Model model) {
         model.addAttribute("cartCount", GlobalData.cart.size());
         model.addAttribute("categories", categoryService.getAllCategory());
-        model.addAttribute("products", productService.getAllProducts());
+        model.addAttribute("offers", offerService.getAllOffers());
         return "index";
     }
     

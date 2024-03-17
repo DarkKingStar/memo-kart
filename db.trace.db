@@ -2233,3 +2233,12 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/sou
 	at org.h2.mvstore.FileStore.open(FileStore.java:172)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:381)
 	... 66 more
+2024-03-17 09:15:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'FIRSTMEMO' (OFFER: ""CODE"" BIGINT NOT NULL)"; SQL statement:
+insert into offer (banner, code, description, discount, name, id) values (?, ?, ?, ?, ?, ?) [22018-200]
+2024-03-17 09:16:23 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DROP OFFER[*]"; expected "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL, DOMAIN, TYPE, DATATYPE, AGGREGATE, SYNONYM"; SQL statement:
+drop OFFER [42001-200]
+2024-03-17 09:22:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "OFFER" not found; SQL statement:
+select offer0_.id as id1_1_, offer0_.banner as banner2_1_, offer0_.code as code3_1_, offer0_.description as descript4_1_, offer0_.discount as discount5_1_, offer0_.name as name6_1_ from offer offer0_ [42102-200]

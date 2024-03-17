@@ -19,19 +19,25 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.hego.kart.dto.ProductDTO;
 import com.hego.kart.model.Category;
+import com.hego.kart.model.Offer;
 import com.hego.kart.model.Product;
 import com.hego.kart.service.CategoryService;
+import com.hego.kart.service.OfferService;
 import com.hego.kart.service.ProductService;
 
 @Controller
 public class AdminController {
     public static String uplaodDirforproduct = System.getProperty("user.dir") + "/src/main/resources/static/productImages";
     public static String uplaodDirforcategory = System.getProperty("user.dir") + "/src/main/resources/static/categoryImages";
+    public static String uplaodDirforoffer = System.getProperty("user.dir") + "/src/main/resources/static/offerImages";
 
     @Autowired
     CategoryService categoryService;
     @Autowired
     ProductService productService;
+    @Autowired
+    OfferService offerService;
+
     @GetMapping("/admin")
     public String adminHome(){
         return "adminHome";
@@ -146,5 +152,49 @@ public class AdminController {
 
         return "productsAdd";
     }
+
+    //Offers Section
+    @GetMapping("/admin/offer")
+    public String getOffer(Model model){
+        model.addAttribute("offers", offerService.getAllOffers());
+        return "offer";
+    }
+    @GetMapping("/admin/offer/add")
+    public String getofferAdd(Model model){
+        model.addAttribute("offer", new Offer());
+        return "offerAdd";
+    }
+
+    @PostMapping("/admin/offer/add")
+    public String postOfferAdd(@ModelAttribute("offer") Offer offer,
+    @RequestParam("offerImage") MultipartFile file,
+    @RequestParam("imgName") String imgName) throws IOException{
+        String imageUUID;
+        if(!file.isEmpty()){
+            imageUUID = file.getOriginalFilename();
+            Path fileNameAndPath  = Paths.get(uplaodDirforoffer, imageUUID);
+            Files.write(fileNameAndPath, file.getBytes());
+        }else{
+            imageUUID = imgName;
+        }
+        offer.setBanner(imageUUID);
+        offerService.addOffer(offer);
+        return "redirect:/admin/offer";
+    }
+
+    @GetMapping("/admin/offer/delete/{id}")
+    public String deleteOffer(@PathVariable int id){
+        offerService.deleteOffer(id);
+        return "redirect:/admin/offer";
+    }
+
+    @GetMapping("/admin/offer/update/{id}")
+    public String updateOffer(@PathVariable int id, Model model){
+        Optional<Offer> offer = offerService.getOffersbyId(id);
+        model.addAttribute("offer", offer.get());
+        return "offerAdd";        
+    }
+
+
 }
 
