@@ -1,5 +1,5 @@
 <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark" >
-    <div class="container-fluid">
+
         <a class="navbar-brand" href="#" th:href="@{/}">
             <!-- <img th:src="@{/images/logo.png}"  src="../static/images/logo.png" width="auto" height="40" class="d-inline-block align-top" alt=""/> -->
         </a>
@@ -8,24 +8,19 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto"></ul>
-            <ul class="navbar-nav">
+            <ul class="navbar-nav m-auto">
                 <li class="nav-item ">
                     <a class="nav-link" th:href="@{/admin}" href="#">Dashboard</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" th:href="@{/admin/category}" href="#">Categories</a>
+                    <a class="nav-link" th:href="@{/admin/categories}" href="#">Categories</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" th:href="@{/admin/product}" href="#">Products</a>
+                    <a class="nav-link" th:href="@{/admin/products}" href="#">Products</a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" th:href="@{/admin/offer}" href="#">Offers</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" sec:authorize="isAuthenticated()"  th:href="@{/profile}" href="#">Profile</a>
-                </li>
-                
+                </li>                
                 <li class="nav-item ">
                     <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">Login</a>
                 </li>
@@ -34,6 +29,6 @@
                 </li>
             </ul>
 
-        </div>
+      
     </div>
 </nav>

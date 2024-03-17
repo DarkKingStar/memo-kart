@@ -43,6 +43,7 @@ public class LoginController {
         GlobalData.cart.clear();
         return "login";
     }
+
     @GetMapping("/forgotpassword")
     public String getForgotPassword() {
         return "forgotpassword";
