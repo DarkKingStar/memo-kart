@@ -34,23 +34,10 @@ public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @GetMapping({"/", "/home"})
-    public String home(Model model, HttpServletRequest request) {
+    public String home(Model model) {
         model.addAttribute("cartCount", GlobalData.cart.size());
         model.addAttribute("categories", categoryService.getAllCategory());
         model.addAttribute("offers", offerService.getAllOffers());
-        Cookie[] cookies = request.getCookies();
-        //get EMIAL from cookies
-        String email = "";
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("EMAIL")) {
-                email = cookie.getValue();
-            }
-        }
-        try{
-            logger.info("user",cookies.toString());
-        }catch(Exception e){
-            logger.info("user not found");
-        }
         return "index";
     }
     
