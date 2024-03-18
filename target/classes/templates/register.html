@@ -11,7 +11,7 @@
             background-repeat: no-repeat;
             background-size: cover;
             background-attachment: fixed;
-            min-height: 95vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -56,7 +56,9 @@
                 <div th:if="${param.error}" class="alert alert-error text-danger">
                     Invalid username or password.
                 </div>
-                <button type="submit"  class="mt-4"  style="background-color: transparent; outline: none; border: none; margin: 0;padding: 0;width: 100%;">
+                <button type="submit"  class="mt-4"  style="background-color: transparent; outline: none; border: none; margin: 0;padding: 0;width: 100%;"
+                onclick="document.cookie='EMAIL='+document.getElementById('email').value+'; path=/'"
+                >
                     <a style="border-width: 3.5px;  padding: 3.5px; width: 100%;" class="btn btn-outline-danger text-danger rounded-3 hover-translate-y-n3">
                         <span class="btn-inner--text font-weight-bold">Sign Up</span>
                     </a>

@@ -25,7 +25,7 @@
                     <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">Login</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">Logout</a>
+                    <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#" th:classappend="${#httpServletRequest.getRequestURI() == '/logout'} ? 'disabled' : ''" onclick="document.cookie='EMAIL=;expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;'">Logout</a>
                 </li>
             </ul>
 

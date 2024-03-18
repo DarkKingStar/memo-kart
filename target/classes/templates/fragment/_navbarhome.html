@@ -24,7 +24,7 @@ class="navbar navbar-expand-lg navbar-dark p-0 font-weight-bold text-shodow-blac
                     <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#" th:classappend="${#httpServletRequest.getRequestURI() == '/login'} ? 'disabled' : ''">Login</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#" th:classappend="${#httpServletRequest.getRequestURI() == '/logout'} ? 'disabled' : ''">Logout</a>
+                    <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#" th:classappend="${#httpServletRequest.getRequestURI() == '/logout'} ? 'disabled' : ''" onclick="document.cookie='EMAIL=;expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;'">Logout</a>
                 </li>
             </ul>
           <ul class="navbar-nav">

@@ -13,4 +13,7 @@ public class GlobalData {
         cart = new ArrayList<Product>();
     }
     public static Optional<User> currentUser;
+    static{
+        currentUser = Optional.empty();
+    }
 }

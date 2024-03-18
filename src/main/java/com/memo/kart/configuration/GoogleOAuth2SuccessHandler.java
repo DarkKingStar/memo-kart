@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -35,6 +36,10 @@ public class GoogleOAuth2SuccessHandler implements AuthenticationSuccessHandler 
             Authentication authentication) throws IOException, ServletException {
         OAuth2AuthenticationToken token = (OAuth2AuthenticationToken) authentication;
         String email = token.getPrincipal().getAttribute("email").toString();
+        //set  email in cookie
+        Cookie cookie = new Cookie("EMAIL",email);
+        cookie.setPath("/");
+        httpServletResponse.addCookie(cookie);
         if(userRepository.findUserByEmail(email).isPresent()){
             
         }else{
