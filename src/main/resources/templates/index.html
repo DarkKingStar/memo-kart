@@ -46,7 +46,7 @@
   </section>
 
   <section>
-    <div id="search" class="container-fluid text-center" style="display: none;">
+    <div id="search" class="container-fluid text-center mt-3" style="display: none;">
       <h3>Search for: <span id="searchquery"></span></h3>
       <ul id="searchlist"></ul>
     </div>
@@ -58,7 +58,7 @@
       <i id="left" class="fa fa-arrow-left"></i>
       <ul class="carousel" >
         <li class="card" th:each="offer, iStat : ${offers}">
-          <a  href="#" th:href="@{/shop/viewoffer/{id}(id=${offer.id})}" 
+          <a  href="#" 
           style="color: #000000; text-decoration: none; text-align: center;">
           <div class="img"><img src="/images/img1.jpg" alt="img" th:src="@{${'/offerImages/' + offer.banner}}" th:alt="${offer.code}" draggable="false"></div>
           <span th:text="${offer.name}">Sales Manager</span>
@@ -273,23 +273,26 @@ wrapper.addEventListener("mouseleave", autoPlay);
     var input = document.getElementById("searchInput").value;
     var searchquery = document.getElementById("searchquery");
     searchquery.innerHTML = input;
-    var controller = new AbortController();
-    setTimeout(() => controller.abort(), 1000);
     if(input !==""){
       var ul = document.getElementById("searchlist");
       ul.innerHTML = "";
       for(var i = 0; i < productsData.length; i++){
-        if(productsData[i].name.toLowerCase().includes(input.toLowerCase())){
+        if(productsData[i].name.toLowerCase().includes(input.toLowerCase()) 
+        || productsData[i].category.name.toLowerCase().includes(input.toLowerCase())
+        || productsData[i].description.toLowerCase().includes(input.toLowerCase())){
           var li = document.createElement("li");
+          var a = document.createElement("a");
           var img = document.createElement("img");
           var name = document.createElement("span");
           var price = document.createElement("h4");
           price.innerHTML = "₹ " + productsData[i].price;
+          a.href = "shop/viewproduct/" + productsData[i].id;
           img.src = "productImages/" +productsData[i].imageName;
           name.innerHTML = productsData[i].name;
-          li.appendChild(img);
-          li.appendChild(name);
-          li.appendChild(price);
+          li.appendChild(a);
+          a.appendChild(img);
+          a.appendChild(name);
+          a.appendChild(price);
           ul.appendChild(li);
         }
         document.getElementById("search").style.display = "block";

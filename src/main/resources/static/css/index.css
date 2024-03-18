@@ -323,12 +323,27 @@ body{
   background: #ebebeb;
   border-radius: 5px;
 }
-#searchlist li img{
+#searchlist li:hover{
+  transform: scale(1.15);
+  cursor: pointer;
+  background-color: #b7d5ed;
+}
+
+#searchlist li:hover a{
+  color: rgb(0, 13, 255);
+}
+
+#searchlist li a{
+  text-decoration: none;
+  color: black;
+  width: 100%;
+}
+#searchlist li a img{
   width: 100px;
   height: 100px;
   mix-blend-mode: darken;
 }
-#searchlist li span{
+#searchlist li a span{
   font-size: 14px;
   text-align: center;
   margin-top: 5px;
