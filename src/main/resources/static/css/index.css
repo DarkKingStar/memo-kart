@@ -1,10 +1,43 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:300,400,500,700');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+@import url('https://fonts.googleapis.com/css2?family=Tillana:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Tillana:wght@400;500;600;700;800&display=swap');
 
+html{
+  scroll-behavior: smooth;
+}
 body{
   font-family: 'Open Sans', sans-serif;
 }
 
+.navbar-fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: transparent; /* Initial background color */
+  transition: background-color 0.8s ease-in-out;
+  z-index: 1000; /* Adjust as needed */
+}
+.navbar-fixed.scrolled {
+  background-color: rgb(104, 213, 240); /* Background color when scrolled */
+}
+.bg-light0{
+  background-color: rgba(255,255,255,0.5);
+  padding: 30px  0px;
+  margin: 2rem 0rem;
+}
+.main-content  h2, #categories h1, #about h5{
+  font-family: "Tillana", system-ui;
+  font-weight: 800;
+  font-style: normal;
+}
+.main-content p{
+  font-family: "Tillana", system-ui;
+}
+#about   p{
+  font-family: "Patrick Hand", system-ui;
+  font-size: 22px;
+}
 .gr-1 {
   background: linear-gradient(170deg, #01E4F8 0%, #1D3EDE 100%);
 }
@@ -19,7 +52,6 @@ body{
   transition: 0.5s;
 }
 .column {
-  margin-top: 3rem;
   padding-left: 3rem;
 }
 .column:hover {
@@ -192,15 +224,15 @@ body{
 /* caroseul */
 
   #offers{
-    display: flex;
-  padding: 40px 35px 0px;
+  display: flex;
   align-items: center;
   justify-content: center;
 
   }
   .wrapper {
-  max-width: 1100px;
-  width: 100%;
+  margin: 0px auto;
+  width: 75%;
+  height: fit-content;
   position: relative;
 }
 .wrapper i {
