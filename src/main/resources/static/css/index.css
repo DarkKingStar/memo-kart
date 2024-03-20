@@ -323,7 +323,8 @@ body{
   background: #ebebeb;
   border-radius: 5px;
 }
-#searchlist li:hover{
+
+#searchlist li:hover {
   transform: scale(1.15);
   cursor: pointer;
   background-color: #b7d5ed;
